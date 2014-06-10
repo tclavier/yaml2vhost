@@ -7,7 +7,7 @@ class TestVhost(unittest.TestCase):
         #Given
         data = """
         "testdocker.camaieu.fr":
-            prod: [apldock1, apldock2]
+            servers: [apldock1, apldock2]
             context: testDocker
             port: 1080
         """        
@@ -25,7 +25,7 @@ class TestVhost(unittest.TestCase):
         #Given
         data = """
         "testdocker.camaieu.fr":
-            prod: [apldock1, apldock2]
+            servers: [apldock1, apldock2]
             context: testDocker
             port: 1080
         """        

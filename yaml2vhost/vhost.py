@@ -6,7 +6,8 @@ class Vhost:
         env = yaml.load(yml)
         output = ""
         for name in env:
-            template = Template("""
+            if host in env[name]['servers']:
+                template = Template("""
 <VirtualHost *:*>
     ProxyPreserveHost On
     ProxyPass /$context http://localhost:$port/$context
@@ -14,5 +15,5 @@ class Vhost:
     ServerName hostname.example.com
 </VirtualHost>"
 """)
-            output += template.substitute(context=env[name]['context'], port=env[name]['port'])
+                output += template.substitute(context=env[name]['context'], port=env[name]['port'])
         return output
