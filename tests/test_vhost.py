@@ -3,7 +3,7 @@ sys.path.append('.')
 from yaml2vhost import *
 
 class TestVhost(unittest.TestCase):
-    def testBasicVhost(self):
+    def testProxyPassLine(self):
         #Given
         data = """
         "testdocker.camaieu.fr":
@@ -37,7 +37,7 @@ class TestVhost(unittest.TestCase):
 
         # Then
         expected = ""
-        self.assertRegexpMatches(yml, expected)
+        self.assertEquals(yml, expected)
 
 if __name__ == '__main__':
     unittest.main()
