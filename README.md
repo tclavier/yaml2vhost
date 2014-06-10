@@ -1,4 +1,4 @@
 yaml2vhost
 ==========
 
-Build vhost for apache from yaml in python
+Build apache vhost with proxypass and cache from yaml in python
