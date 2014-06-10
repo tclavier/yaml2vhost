@@ -3,37 +3,33 @@ sys.path.append('.')
 from yaml2vhost import *
 
 class TestVhost(unittest.TestCase):
-    def testProxyPassLine(self):
-        #Given
-        data = """
-        "testdocker.camaieu.fr":
+
+    def setUp(self):
+        self.sample_yaml = """
+        "testyaml.domain.com":
             servers: [apldock1, apldock2]
-            context: testDocker
+            context: testYaml
             port: 1080
         """        
+        self.vhost = vhost.Vhost()
+
+    def testProxyPassLine(self):
+        #Given
         host = "apldock1"
 
         # When
-        obj = vhost.Vhost()
-        yml = obj.build(data,host)
+        yml = self.vhost.build(self.sample_yaml,host)
 
         # Then
-        expected = "ProxyPass /testDocker http://localhost:1080/testDocker"
+        expected = "ProxyPass /testYaml http://localhost:1080/testYaml"
         self.assertRegexpMatches(yml, expected)
 
     def testBadHost(self):
         #Given
-        data = """
-        "testdocker.camaieu.fr":
-            servers: [apldock1, apldock2]
-            context: testDocker
-            port: 1080
-        """        
         host = "apldock3"
 
         # When
-        obj = vhost.Vhost()
-        yml = obj.build(data,host)
+        yml = self.vhost.build(self.sample_yaml,host)
 
         # Then
         expected = ""
