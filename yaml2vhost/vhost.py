@@ -11,7 +11,7 @@ class Vhost:
 <VirtualHost *:*>
     ProxyPreserveHost On
     ProxyPass /$context http://localhost:$port/$context
-    ProxyPassReverse / http://192.168.111.2/
+    ProxyPassReverse /$context http://localhost:$port/$context
     ServerName $name
 </VirtualHost>"
 """)
