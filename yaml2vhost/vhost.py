@@ -12,8 +12,11 @@ class Vhost:
     ProxyPreserveHost On
     ProxyPass /$context http://localhost:$port/$context
     ProxyPassReverse / http://192.168.111.2/
-    ServerName hostname.example.com
+    ServerName $name
 </VirtualHost>"
 """)
-                output += template.substitute(context=env[name]['context'], port=env[name]['port'])
+                output += template.substitute(
+                    context = env[name]['context'], 
+                    port    = env[name]['port'],
+                    name    = name)
         return output

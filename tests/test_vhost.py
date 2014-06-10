@@ -24,6 +24,17 @@ class TestVhost(unittest.TestCase):
         expected = "ProxyPass /testYaml http://localhost:1080/testYaml"
         self.assertRegexpMatches(yml, expected)
 
+    def testServerNameLine(self):
+        #Given
+        host = "apldock1"
+
+        # When
+        yml = self.vhost.build(self.sample_yaml,host)
+
+        # Then
+        expected = "ServerName testyaml.domain.com"
+        self.assertRegexpMatches(yml, expected)
+
     def testBadHost(self):
         #Given
         host = "apldock3"
