@@ -13,10 +13,20 @@ class Vhost:
     ProxyPass /$context http://localhost:$port/$context
     ProxyPassReverse /$context http://localhost:$port/$context
     ServerName $name
+    $cacheLine
 </VirtualHost>"
-""")
-                output += template.substitute(
-                    context = env[name]['context'], 
-                    port    = env[name]['port'],
-                    name    = name)
+""")            
+                if 'cache' in env[name]:
+                    cache_line = "CacheEnable %s /" % env[name]['cache']
+                else :
+                    cache_line = ""
+
+                replace = dict(
+                    context   = env[name]['context'], 
+                    port      = env[name]['port'],
+                    name      = name,
+                    cacheLine = cache_line
+                    )
+
+                output += template.substitute(replace)
         return output
