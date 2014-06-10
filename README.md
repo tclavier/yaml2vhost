@@ -12,6 +12,7 @@ Sample yaml configuration file :
     "subdomain2.domain.com":
       servers: ['prod1', 'prod2', 'qual1', 'dev2']
       context: subDomain2
+      cache: disk
       port: 9080
 
 Sample vhost generated
@@ -28,5 +29,6 @@ Sample vhost generated
       ProxyPass /subDomain2 http://localhost:9080/subDomain2
       ProxyPassReverse /subDomain2 http://localhost:9080/subDomain2
       ServerName subdomain2.domain.com
+      CacheEnable disk /
     </VirtualHost>"
 
