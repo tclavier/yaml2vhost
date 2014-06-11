@@ -10,8 +10,8 @@ class Vhost:
                 template = Template("""
 <VirtualHost *:*>
     ProxyPreserveHost On
-    ProxyPass /$context http://localhost:$port/$context
-    ProxyPassReverse /$context http://localhost:$port/$context
+    ProxyPass /$context http://$host:$port/$context
+    ProxyPassReverse /$context http://$host:$port/$context
     ServerName $name
     $cacheLine
 </VirtualHost>
@@ -25,7 +25,8 @@ class Vhost:
                     context   = env[name]['context'], 
                     port      = env[name]['port'],
                     name      = name,
-                    cacheLine = cache_line
+                    cacheLine = cache_line,
+                    host      = host
                     )
 
                 output += template.substitute(replace)

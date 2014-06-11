@@ -36,7 +36,7 @@ class TestVhost(unittest.TestCase):
         yml = self.vhost.build(self.sample_yaml,host)
 
         # Then
-        expected = "ProxyPass /testYaml http://localhost:1080/testYaml"
+        expected = "ProxyPass /testYaml http://apldock1:1080/testYaml"
         self.assertRegexpMatches(yml, expected)
 
     def testProxyPassReverseLine(self):
@@ -47,7 +47,7 @@ class TestVhost(unittest.TestCase):
         yml = self.vhost.build(self.sample_yaml,host)
 
         # Then
-        expected = "ProxyPassReverse /testYaml http://localhost:1080/testYaml"
+        expected = "ProxyPassReverse /testYaml http://apldock1:1080/testYaml"
         self.assertRegexpMatches(yml, expected)
 
     def testServerNameLine(self):
