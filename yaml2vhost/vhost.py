@@ -14,7 +14,7 @@ class Vhost:
     ProxyPassReverse /$context http://localhost:$port/$context
     ServerName $name
     $cacheLine
-</VirtualHost>"
+</VirtualHost>
 """)            
                 if 'cache' in env[name]:
                     cache_line = "CacheEnable %s /" % env[name]['cache']
