@@ -1,9 +1,9 @@
 "subdomain1.domain.com":
-  servers: ['prod1', 'prod2', 'qual1', 'dev2']
+  servers: ['prod2', 'qual1', 'dev2']
   context: subDomain1
   port: 8080
 "subdomain2.domain.com":
-  servers: ['prod1', 'prod2', 'qual1', 'dev2']
+  servers: ['prod1', 'prod2', 'qual1', 'dev1']
   context: subDomain2
   cache: disk
   port: 9080
