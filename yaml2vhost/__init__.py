@@ -1,1 +1,1 @@
-__all__ = ['vhost']
+__all__ = ['vhost', 'services']
