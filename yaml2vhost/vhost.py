@@ -14,7 +14,8 @@ class Vhost:
     ProxyPassReverse /$context http://$host:$port/$context
     ServerName $name
     ServerAlias $alias
-    RewriteRule / /$context
+    RewriteEngine on
+    RewriteRule ^/$$ http://$name/$context
     $cacheLine
 </VirtualHost>
 """)            
