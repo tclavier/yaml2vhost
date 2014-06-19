@@ -13,6 +13,8 @@ class Vhost:
     ProxyPass /$context http://$host:$port/$context
     ProxyPassReverse /$context http://$host:$port/$context
     ServerName $name
+    ServerAlias $alias
+    RewriteRule / /$context
     $cacheLine
 </VirtualHost>
 """)            
@@ -26,7 +28,8 @@ class Vhost:
                     port      = env[name]['port'],
                     name      = name,
                     cacheLine = cache_line,
-                    host      = host
+                    host      = host,
+                    alias     = name.split('.')[0]
                     )
 
                 output += template.substitute(replace)

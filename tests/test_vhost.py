@@ -100,5 +100,27 @@ class TestVhost(unittest.TestCase):
         expected = "CacheEnable"
         self.assertNotRegexpMatches(yml, expected)
 
+    def testRewriteRule(self):
+        #Given
+        host = "apldock1"
+
+        # When
+        yml = self.vhost.build(self.sample_yaml,host)
+
+        # Then
+        expected = "RewriteRule / /testYaml"
+        self.assertRegexpMatches(yml, expected)
+
+    def testServerAlias(self):
+        #Given
+        host = "apldock1"
+
+        # When
+        yml = self.vhost.build(self.sample_yaml,host)
+
+        # Then
+        expected = "ServerAlias testyaml"
+        self.assertRegexpMatches(yml, expected)
+
 if __name__ == '__main__':
     unittest.main()
